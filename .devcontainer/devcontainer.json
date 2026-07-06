@@ -1,0 +1,27 @@
+{
+  "name": "rlmc-torch201-cu118-py310",
+  "image": "torch201-cu118-py310:latest",
+  "workspaceFolder": "/workspace/rlmc",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/rlmc,type=bind",
+  "runArgs": [
+    "--gpus",
+    "all"
+  ],
+  "remoteUser": "worker",
+  "containerEnv": {
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/conda/bin/python",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
