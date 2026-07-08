@@ -29,20 +29,22 @@ FDIR_DICT = {"ETTh1": ("./dataset/ETT", 'ETTh1.csv'),
              "ETTm1": ("./dataset/ETT", 'ETTm1.csv'),
              "ETTm2": ("./dataset/ETT", 'ETTm2.csv'),
              "electricity": ("./dataset/electricity", "electricity.csv"),
-             "traffic": ("./dataset/traffic", "traffic.csv"),
-             "illness": ("./dataset/illness", "national_illness.csv"),
-             "weather": ("./dataset/weather", "weather.csv"),
-             "exchange_rate": ("./dataset/exchange_rate", "exchange_rate.csv")}
+            #  "traffic": ("./dataset/traffic", "traffic.csv"),
+            #  "illness": ("./dataset/illness", "national_illness.csv"),
+            #  "weather": ("./dataset/weather", "weather.csv"),
+            #  "exchange_rate": ("./dataset/exchange_rate", "exchange_rate.csv")
+             }
 
 DIMS_DICT = {"ETTh1": 7,
              "ETTh2": 7,
              "ETTm1": 7,
              "ETTm2": 7,
              "electricity": 321,
-             "traffic": 862,
-             "illness": 7,
-             "weather": 21,
-             "exchange_rate": 8}
+            #  "traffic": 862,
+            #  "illness": 7,
+            #  "weather": 21,
+            #  "exchange_rate": 8
+             }
 
 
 ###################
@@ -137,7 +139,7 @@ def get_args():
                         help='whether to predict unseen future data')
 
     # optimization 
-    parser.add_argument('--train_epochs', type=int, default=10)
+    parser.add_argument('--train_epochs', type=int, default=20)
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--patience', type=int, default=3)
     parser.add_argument('--lr', type=float, default=1e-4, help='lr')

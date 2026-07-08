@@ -13,7 +13,7 @@ class ConvLayer(nn.Module):
         super().__init__()
         # 用 1D 卷积在时间维上提取局部上下文；padding_mode='circular' 用循环填充处理序列边界。
         self.downConv = nn.Conv1d(in_channels=c_in,
-                                  out_channel=c_in,
+                                  out_channels=c_in,
                                   kernel_size=3,
                                   padding=2,
                                   padding_mode='circular')
@@ -51,6 +51,7 @@ class EncoderLayer(nn.Module):
         super().__init__()
         # 若未指定隐藏维度，使用 Transformer 常见设置：前馈层宽度为 4 * d_model。
         d_ff = d_ff or 4 * d_model
+        self.attention = attention
         self.conv1 = nn.Conv1d(in_channels=d_model, out_channels=d_ff, kernel_size=1)
         self.conv2 = nn.Conv1d(in_channels=d_ff, out_channels=d_model, kernel_size=1)
         self.norm1 = nn.LayerNorm(d_model)
@@ -161,7 +162,7 @@ class Decoder(nn.Module):
     """由多个 DecoderLayer 组成的解码器，可选最终归一化和输出投影。"""
     def __init__(self, layers, norm_layer=None, projection=None):
         super().__init__()
-        super.layers = nn.ModuleList(layers)
+        self.layers = nn.ModuleList(layers)
         self.norm = norm_layer
         self.projection = projection
 
@@ -178,4 +179,3 @@ class Decoder(nn.Module):
             x = self.projection(x)
 
         return x
- 

@@ -35,7 +35,7 @@ class ProbMask():
         indicator = _mask_ex[torch.arange(B)[:, None, None],
                     torch.arange(H)[None, :, None],
                     index, :].to(device)
-        # 注意：当前代码没有把 indicator 赋给 self._mask，下面的 mask 属性会读不到 _mask。
+        self._mask = indicator
 
     @property
     def mask(self):
